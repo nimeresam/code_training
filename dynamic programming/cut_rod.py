@@ -21,9 +21,19 @@ def cutRodMemo(price, n, memo):
         max_val = max(max_val, price[index] + prev)
     return max_val
 
+def cutRodTab(price, n):
+    max_profits = [0] * (n+1)
+    directions = [0] * (n+1)
+    for oi in range(n):
+        for ii in range(oi + 1):
+            next_val = price[ii] + max_profits[oi - ii]
+            if max_profits[oi + 1] < next_val:
+                max_profits[oi + 1] = next_val
+                directions[oi + 1] = ii + 1
+    return max_profits[-1]
 
 # Driver code 
 arr = [1, 5, 8, 9, 10, 17, 17, 20, 24, 30] 
 size = len(arr) 
-best_val = cutRodMem(arr, 10, {})
+best_val = cutRodTab(arr, 10)
 print("Maximum Obtainable Value is", best_val) 
