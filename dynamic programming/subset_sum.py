@@ -12,7 +12,7 @@ def isSubsetSum(set, n, sum):
 
     return isSubsetSum(set, n-1, sum) or isSubsetSum(set, n-1, sum-set[n-1])
 
-def isSubsetSum_dyn(set, n, sum):
+def isSubsetSum_tabulation(set, n, sum):
     # create 2D array of sum + 1 * n + 1
     # fill first column with True
     # fill first row with False
